@@ -1,3 +1,18 @@
+<?php
+
+$res = $wpdb->get_results('select * from wp_tl_docs');
+echo json_encode($res);
+
+$string = "im just a string";
+
+?>
+
+<script>
+console.log( 'testing script' )
+/* console.log( '<?php echo $res ?>' ) */
+var docs = JSON.parse( '<?php echo json_encode($res) ?>' )
+</script>
+
 <div class="container">
     <!-- info space -->
     <div id="info-wrapper">
