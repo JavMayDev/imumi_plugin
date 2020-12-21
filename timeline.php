@@ -7,7 +7,7 @@
 
 include(__DIR__.'/admin/index.php');
 include(__DIR__.'/create_table.php');
-register_activation_hook(__FILE__, 'tl_create_table');
+register_activation_hook(__FILE__, 'tl_create_tables');
 
 /* include(__DIR__.'/create_static_page.php'); */
 /* register_activation_hook(__FILE__, 'tl_create_static_page'); */

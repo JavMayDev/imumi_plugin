@@ -1,23 +1,23 @@
 <?php
+$docs = $wpdb->get_results('select * from wp_tl_docs');
+foreach($docs as $row) {
+    $row->content = (str_replace("\r\n", "\\r\\n", $row->content));
+}
 
-$res = $wpdb->get_results('select * from wp_tl_docs');
-echo json_encode($res);
-
-$string = "im just a string";
-
+$doc_types = $wpdb->get_results('select * from wp_tl_doc_types');
 ?>
 
 <script>
-console.log( 'testing script' )
-/* console.log( '<?php echo $res ?>' ) */
-var docs = JSON.parse( '<?php echo json_encode($res) ?>' )
+var docs = JSON.parse( '<?php echo json_encode($docs) ?>' )
+var doc_types = JSON.parse( '<?php echo json_encode($doc_types) ?>' )
+console.log( 'docs_types: ', doc_types )
 </script>
 
-<div class="container">
+<div class="tl_container">
     <!-- info space -->
-    <div id="info-wrapper">
+    <div id="tl_info-wrapper">
 	<!-- <img id='week-img' src="" alt=""> -->
-	<div id="info"></div>
+	<div id="tl_info"></div>
     </div>
 
     <div id="timeLineWrapper">
@@ -38,6 +38,7 @@ var docs = JSON.parse( '<?php echo json_encode($res) ?>' )
 </div>
 
 <button id="toggler">check timeLineData</button>
+
 
 <script src="<?= plugins_url().'/timeline/public/bundle.js'?>"></script>
 
