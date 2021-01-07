@@ -1,3 +1,5 @@
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
 <?php
 $docs = $wpdb->get_results('select * from wp_tl_docs');
 foreach($docs as $row) {
@@ -30,7 +32,7 @@ console.log( 'docs_types: ', doc_types )
 		    stroke-width="2"
 		    />
 	    </svg>
-	    <div><img id="pin" src="http://webmayorque.com/imumi_test/pin.png" alt=""></div>
+	    <div><img id="pin" src="<?= plugins_url().'/timeline/assets/images/pin.png'?>" alt=""></div>
 	    <svg id="svgLine" width="auto"></svg>
 	    <div id="monthTags"></div>
 	</div>

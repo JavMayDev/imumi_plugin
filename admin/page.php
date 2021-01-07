@@ -51,9 +51,28 @@ $res = tl_get_doc_types();
 
 	<input type="text" name="date" placeholder="YYYY-MM-DD">
 	<input type="text" name="country" placeholder="pais">
-	<textarea id="" name="content" cols="30" rows="10"></textarea>
+	<textarea placeholder="contenido" id="" name="content" cols="30" rows="10"></textarea>
 	<input type="text" name='source' placeholder='fuente (url)'>
-	<input type="text" name="image_url" placeholder="image url">
+
+	<!-- image input -->
+	<?php
+	    if(function_exists( 'wp_enqueue_media' )){
+		wp_enqueue_media();
+	    }else{
+		wp_enqueue_style('thickbox');
+		wp_enqueue_script('media-upload');
+		wp_enqueue_script('thickbox');
+	    }
+	?>
+	    <div style="display: flex; flex-direction: row;">
+		<img style="height: 100px; width: 100px; object-fit: cover" class="header_logo" src="<?php echo get_option('header_logo'); ?>" height="100" width="100"/>
+		<a href="#" class="header_logo_upload"><button>Imagen</button></a>
+	    </div>
+	    <input style="display: none;" class="header_logo_url" type="text" name="image_url" size="60" value="<?php echo get_option('header_logo'); ?>">
+
+	</p>    
+
+	<label for="">categor&iacute;a</label>
 	<select id="" name="type">
 	    
 	    <option value="" disabled hidden default>categoria</option>
@@ -85,5 +104,6 @@ $res = tl_get_doc_types();
 	    event.target.style.backgroundColor = '#' + event.target.value
 	})
     </script>
+    <script src="<?= plugins_url().'/timeline/admin/uploadMedia.js'?>"></script>
 </body>
 </html>
