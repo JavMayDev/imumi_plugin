@@ -7,6 +7,9 @@ foreach($docs as $row) {
 }
 
 $doc_types = $wpdb->get_results('select * from wp_tl_doc_types');
+
+get_header();
+
 ?>
 
 <script>
@@ -39,8 +42,9 @@ console.log( 'docs_types: ', doc_types )
     </div>
 </div>
 
-<button id="toggler">check timeLineData</button>
+<!-- <button id="toggler">check timeLineData</button> -->
 
 
 <script src="<?= plugins_url().'/timeline/public/bundle.js'?>"></script>
 
+<?php get_footer(); ?>
